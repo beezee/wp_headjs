@@ -37,7 +37,11 @@ if (!class_exists('wpHeadJS'))
                 $src = ( (preg_match('/^(http|https)\:\/\//', $src)) ? '' : get_bloginfo('url') ) . $src;
                 $scripts[] = '{"' . $script . '":"' . $src . '"}';
             }
-            echo "<script type=\"text/javascript\" src=\"".get_bloginfo('wpurl') . "/wp-content/plugins/".basename(dirname(__FILE__))."/head.min.js\"></script>\n";
+            if (!property_exists($wp_scripts, 'headjs_enqueued'))
+            {
+                echo "<script type=\"text/javascript\" src=\"".get_bloginfo('wpurl') . "/wp-content/plugins/".basename(dirname(__FILE__))."/head.min.js\"></script>\n";
+                $wp_scripts->headjs_enqueued = true;
+            }
             echo "<script type=\"text/javascript\">head.js(\n". implode(",\n", $scripts). "\n);</script>\n";
             $wp_scripts->queue = array();
         }
