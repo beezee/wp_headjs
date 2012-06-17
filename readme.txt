@@ -35,4 +35,4 @@ For more on HeadJS usage, see http://headjs.com/
 
 == Installation ==
 
-The easiest way is via Plugins->Add New from the left sidebar of your WP Admin, just search for category sticky posts.
+The easiest way is via Plugins->Add New from the left sidebar of your WP Admin, just search for headjs.
